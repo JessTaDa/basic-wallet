@@ -11,5 +11,9 @@
   "dependencies": {
     "ethers": "^4.0.24",
     "hyperapp": "^1.2.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-react-jsx": "^7.3.0"
   }
 }
