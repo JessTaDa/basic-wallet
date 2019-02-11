@@ -1,20 +1,33 @@
-import { h, app } from "hyperapp"
+const ethers = require('ethers');
+import { h, app } from "hyperapp";
 
 const state = {
-  count: 0
+  wallet: {
+    privateKey: null,
+    address: null
+  }
 }
 
 const actions = {
-  down: value => state => ({ count: state.count - value }),
-  up: value => state => ({ count: state.count + value })
-}
+  wallet: {
+    generateWallet: () => state => {
+      const wallet = ethers.Wallet.createRandom();
+      return {
+        privateKey: wallet.privateKey,
+        address: wallet.address
+      };
+    },
+  },
+};
 
 const view = (state, actions) => (
   <div>
-    <h1>{state.count}</h1>
-    <button onclick={() => actions.down(1)}>-</button>
-    <button onclick={() => actions.up(1)}>+</button>
+    <h1>{state.wallet.address}</h1>
+    <h1>{state.wallet.privateKey}</h1>
+    <button onclick={() => actions.wallet.generateWallet()}>
+      Generate Wallet
+    </button>
   </div>
-)
+);
 
 app(state, actions, view, document.body)
