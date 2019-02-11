@@ -1,4 +1,6 @@
-This is a basic tutorial to build a basic wallet app using  [ethers.js](https://docs.ethers.io/ethers.js/html/) and [hyperapp](https://github.com/jorgebucaran/hyperapp). We will launch the app using [parcel](https://parceljs.org/getting_started.html) and [surge](https://surge.sh/).
+This is a tutorial to build a basic wallet generation app using [ethers.js](https://docs.ethers.io/ethers.js/html/) and [hyperapp](https://github.com/jorgebucaran/hyperapp). We will launch the app using [parcel](https://parceljs.org/getting_started.html) and [surge](https://surge.sh/).
+
+[Here's](http://basic-wallet.surge.sh/) one I prepared earlier ;)
 
 ## Install required packages
 Create a new folder where you want your project to be. From the root folder run:
@@ -49,7 +51,7 @@ const actions = {
   },
 };
 
-// Displays the wallet address and privateKey states. 
+// Displays the wallet address and privateKey states.
 // Create a button that calls the generateWallet action.
 const view = (state, actions) => (
   <div>
