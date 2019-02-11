@@ -28,7 +28,7 @@ const ethers = require('ethers');
 // importing hyperapp
 import { h, app } from "hyperapp";
 
-// constructor state of the wallet privateKey and address is set to null.
+// Create a wallet object with privateKey and address attributes with a default state set to null.
 const state = {
   wallet: {
     privateKey: null,
@@ -36,7 +36,7 @@ const state = {
   }
 }
 
-// generateWallet action calls the ethers.js library createRandom() method and returns a newly created privateKey and address
+// Create a generateWallet action in wallet, that calls the ethers.js library wallet.createRandom() method and returns a newly created privateKey and address. Set the created privateKey and address to the app state.
 const actions = {
   wallet: {
     generateWallet: () => state => {
@@ -49,7 +49,8 @@ const actions = {
   },
 };
 
-// displays new wallet address and privateKey that have been generated each time the button is clicked.
+// Displays the wallet address and privateKey states. 
+// Create a button that calls the generateWallet action.
 const view = (state, actions) => (
   <div>
     <h1>{state.wallet.address}</h1>
