@@ -21,26 +21,44 @@ Create a new folder where you want your project to be. From the root folder run:
 </html>
 ```
 
-5. Following the hyperapp [example](https://github.com/jorgebucaran/hyperapp), copy paste the hyperapp example code below into `index.js` to see if the page is running:
+5. Paste the following code into `index.js`. (For more information, see [ethers.js wallets and signers](https://docs.ethers.io/ethers.js/html/api-wallet.html?highlight=createrandom) and Follow the hyperapp [example](https://github.com/jorgebucaran/hyperapp):
 ```javascript
-import { h, app } from "hyperapp"
+// importing the ethers.js library
+const ethers = require('ethers');
+// importing hyperapp
+import { h, app } from "hyperapp";
 
+// constructor state of the wallet privateKey and address is set to null.
 const state = {
-  count: 0
+  wallet: {
+    privateKey: null,
+    address: null
+  }
 }
 
+// generateWallet action calls the ethers.js library createRandom() method and returns a newly created privateKey and address
 const actions = {
-  down: value => state => ({ count: state.count - value }),
-  up: value => state => ({ count: state.count + value })
-}
+  wallet: {
+    generateWallet: () => state => {
+      const wallet = ethers.Wallet.createRandom();
+      return {
+        privateKey: wallet.privateKey,
+        address: wallet.address
+      };
+    },
+  },
+};
 
+// displays new wallet address and privateKey that have been generated each time the button is clicked.
 const view = (state, actions) => (
   <div>
-    <h1>{state.count}</h1>
-    <button onclick={() => actions.down(1)}>-</button>
-    <button onclick={() => actions.up(1)}>+</button>
+    <h1>{state.wallet.address}</h1>
+    <h1>{state.wallet.privateKey}</h1>
+    <button onclick={() => actions.wallet.generateWallet()}>
+      Generate Wallet
+    </button>
   </div>
-)
+);
 
 app(state, actions, view, document.body)
 ```

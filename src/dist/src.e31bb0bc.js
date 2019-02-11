@@ -469,8 +469,11 @@ function app(state, actions, view, container) {
 
 var _hyperapp = require("hyperapp");
 
-var ethers = require('ethers');
+// importing the ethers.js library
+var ethers = require('ethers'); // importing hyperapp
 
+
+// constructor state of the wallet privateKey and address is set to null.
 var state = {
   wallet: {
     privateKey: null,
@@ -479,6 +482,7 @@ var state = {
 };
 var actions = {
   wallet: {
+    // generateWallet action calls the ethers.js library createRandom() method and returns a newly created privateKey and address
     generateWallet: function generateWallet() {
       return function (state) {
         var wallet = ethers.Wallet.createRandom();
@@ -489,7 +493,7 @@ var actions = {
       };
     }
   }
-};
+}; // displays new wallet address and privateKey that have been generated
 
 var view = function view(state, actions) {
   return (0, _hyperapp.h)("div", null, (0, _hyperapp.h)("h1", null, state.wallet.address), (0, _hyperapp.h)("h1", null, state.wallet.privateKey), (0, _hyperapp.h)("button", {
@@ -527,7 +531,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58563" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56703" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
